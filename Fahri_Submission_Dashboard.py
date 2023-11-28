@@ -26,8 +26,8 @@ st.write('Both hour.csv and day.csv have the following fields, except hr which i
 st.subheader("Reading the Dataset")
 st.code("hourly_data = pd.read_csv('hour.csv')")
 st.code("daily_data = pd.read_csv('day.csv')")
-hourly_data = pd.read_csv('DICODING\PY-DATA\hour.csv')
-daily_data = pd.read_csv('DICODING\PY-DATA\day.csv')
+hourly_data = pd.read_csv('./Dataset/hour.csv')
+daily_data = pd.read_csv('./Dataset/day.csv')
 
 # Display the raw data
 st.header('Raw Data')
@@ -87,7 +87,6 @@ with col2:
 st.header('Smart Question')
 st.write('- Bagaimana pengaruh dari variabel cuaca seperti temperatur, kelembaban, dan kondisi cuaca terhadap jumlah penyewaan sepeda?')
 st.write('- Berapa perubahan dalam jumlah penyewaan sepeda berdasarkan musim (springer, summer, fall, winter) dari tahun 2011 ke tahun 2012?')
-st.write('- Bagaimana tren jumlah penyewaan sepeda per bulan dari musim ke musim dalam rentang waktu tahun 2011 hingga 2012?')
 # Data Exploration
 # Data Cleaning
 st.header('Data Cleaning')
