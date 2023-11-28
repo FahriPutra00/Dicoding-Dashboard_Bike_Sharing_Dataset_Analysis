@@ -85,8 +85,8 @@ with col2:
     st.pyplot()
 #SMART QUESTION
 st.header('Smart Question')
-st.write('- Bagaimana pengaruh dari variabel cuaca seperti temperatur, kelembaban, dan kondisi cuaca terhadap jumlah penyewaan sepeda?')
-st.write('- Berapa perubahan dalam jumlah penyewaan sepeda berdasarkan musim (springer, summer, fall, winter) dari tahun 2011 ke tahun 2012?')
+st.write('- How do weather variables such as temperature, humidity, and weather conditions affect the number of bicycle rentals?\nBagaimana pengaruh dari variabel cuaca seperti temperatur, kelembaban, dan kondisi cuaca terhadap jumlah penyewaan sepeda?')
+st.write('- What is the change in the number of bicycle rentals by season (spring, summer, fall, winter) from 2011 to 2012?\nBerapa perubahan dalam jumlah penyewaan sepeda berdasarkan musim (springer, summer, fall, winter) dari tahun 2011 ke tahun 2012?')
 # Data Exploration
 # Data Cleaning
 st.header('Data Cleaning')
@@ -157,15 +157,15 @@ with col2:
 # Data Visualization
 st.header('Data Visualization')
 
-st.subheader('Pengaruh Variabel terhadap Jumlah Penyewaan Sepeda')
-st.write('Bagaimana pengaruh dari variabel cuaca seperti temperatur, kelembaban, dan kondisi cuaca terhadap jumlah penyewaan sepeda?')
+st.subheader('Influence of Weather Variables on the Number of Bike Rentals')
+st.write('- How do weather variables such as temperature, humidity, and weather conditions affect the number of bicycle rentals?\nBagaimana pengaruh dari variabel cuaca seperti temperatur, kelembaban, dan kondisi cuaca terhadap jumlah penyewaan sepeda?')
 col1, col2 = st.columns(2)
 with col1:
 # Plotting the scatter plot
     st.subheader('Hourly Data')
     plt.figure(figsize=(10, 8))
     sns.scatterplot(data=hourly_data, x='hum', y='temp', size='cnt', hue='weathersit', palette='viridis', sizes=(20, 200))
-    plt.title('Pengaruh Variabel Cuaca terhadap Jumlah Penyewaan Sepeda')
+    plt.title('Influence of Weather Variables on the Number of Bike Rentals')
     plt.xlabel('Humidity')
     plt.ylabel('Temperature')
     plt.legend(title='Weather Situation')
@@ -175,33 +175,28 @@ with col2:
     st.subheader('Daily Data')
     plt.figure(figsize=(10, 8))
     sns.scatterplot(data=daily_data, x='hum', y='temp', size='cnt', hue='weathersit', palette='viridis', sizes=(20, 200))
-    plt.title('Pengaruh Variabel Cuaca terhadap Jumlah Penyewaan Sepeda')
+    plt.title('Influence of Weather Variables on the Number of Bike Rentals')
     plt.xlabel('Humidity')
     plt.ylabel('Temperature')
     plt.legend(title='Weather Situation')
     plt.show()
     st.pyplot()
     
-st.subheader('Perubahan Jumlah Penyewaan Sepeda dari Tahun 2011 ke Tahun 2012 pada setiap musim')
+st.subheader('Change in number of bicycle rentals from 2011 to 2012 for each season')
 # Plotting the bar plot
-st.write('Berapa perubahan dalam jumlah penyewaan sepeda berdasarkan musim (springer, summer, fall, winter) dari tahun 2011 ke tahun 2012?')
+st.write('- What is the change in the number of bicycle rentals by season (spring, summer, fall, winter) from 2011 to 2012?\nBerapa perubahan dalam jumlah penyewaan sepeda berdasarkan musim (springer, summer, fall, winter) dari tahun 2011 ke tahun 2012?')
 col1, col2 = st.columns(2)
 with col1:
     st.subheader('Hourly Data')
     plt.figure(figsize=(8, 6))
     ax = sns.barplot(data=hourly_data, x='season', y='cnt', hue='yr', palette='viridis')
-    plt.title('Perubahan Jumlah Penyewaan Sepeda dari Tahun 2011 ke Tahun 2012 pada setiap musim')
+    plt.title('Change in number of bicycle rentals from 2011 to 2012 for each season')
     plt.xlabel('Musim')
     plt.ylabel('Jumlah Penyewaan Sepeda')
     handles, labels = ax.get_legend_handles_labels()
     ax.legend(handles, ['2011', '2012'], title='Tahun')
-    #add value labels
-    rects = ax.patches
-    labels = hourly_data.groupby(['season', 'yr'])['cnt'].sum().values
-    for rect, label in zip(rects, labels):
-        height = rect.get_height()
-        ax.text(rect.get_x() + rect.get_width()/2, height + 5, label, ha='center', va='bottom')
-        
+    labels = daily_data.groupby(['season', 'yr'])['cnt'].sum()
+    print(labels)
     plt.tight_layout()
     plt.show()
     st.pyplot()
@@ -209,19 +204,21 @@ with col2:
     st.subheader('Daily Data')
     plt.figure(figsize=(8, 6))
     ax = sns.barplot(data=daily_data, x='season', y='cnt', hue='yr', palette='viridis')
-    plt.title('Perubahan Jumlah Penyewaan Sepeda dari Tahun 2011 ke Tahun 2012 pada setiap musim')
+    plt.title('Change in number of bicycle rentals from 2011 to 2012 for each season')
     plt.xlabel('Musim')
     plt.ylabel('Jumlah Penyewaan Sepeda')
     handles, labels = ax.get_legend_handles_labels()
     ax.legend(handles, ['2011', '2012'], title='Tahun')
-    #add value labels
-    rects = ax.patches
-    labels = daily_data.groupby(['season', 'yr'])['cnt'].sum().values
-    for rect, label in zip(rects, labels):
-        height = rect.get_height()
-        ax.text(rect.get_x() + rect.get_width()/2, height + 5, label, ha='center', va='bottom')
-        
+    labels = daily_data.groupby(['season', 'yr'])['cnt'].sum()
+    print(labels)
     plt.tight_layout()
     plt.show()
     st.pyplot()
 
+st.header('Conclusion')
+st.subheader("Question 1")
+st.write('- How do weather variables such as temperature, humidity, and weather conditions affect the number of bicycle rentals?\nBagaimana pengaruh dari variabel cuaca seperti temperatur, kelembaban, dan kondisi cuaca terhadap jumlah penyewaan sepeda?')
+st.write("The influence of weather variables on bicycle rentals, the scatterplot visualization shows that weather variables such as air temperature, air humidity, and weather conditions significantly affect the level of bicycle rentals. In the scatterplot analysis, the pattern formed illustrates the close relationship between weather conditions and the number of bicycle rentals. On sunny days, especially when the air temperature tends to be high, there is a sharp increase in the number of people choosing to rent bicycles. This reflects that sunny and warm weather conditions tend to be the main factor driving people's interest in using bicycle rental services. In contrast, on days with cloudy weather or lower temperatures, there is a considerable drop in the number of bicycle borrowers. This suggests that unfavorable weather conditions, such as inclement weather or uncomfortable temperatures, may discourage people from cycling in favor of other alternatives for outdoor activities. The importance of weather variables in determining bicycle rental rates emphasizes the need for strategies that are responsive to weather forecasts. Bicycle rental companies can utilize weather information to adjust marketing strategies, offer special promotions, or provide additional services to increase the appeal of bicycle rentals under varying weather conditions.")
+st.subheader("Question 2")
+st.write('- What is the change in the number of bicycle rentals by season (spring, summer, fall, winter) from 2011 to 2012?\nBerapa perubahan dalam jumlah penyewaan sepeda berdasarkan musim (springer, summer, fall, winter) dari tahun 2011 ke tahun 2012?')
+st.write("It can be seen from the bar chart that the significant increase in bicycle rentals from 2011 to 2012 indicates that bicycle rental services are increasingly in demand by the public. With an increase of more than 10%, this reflects a positive trend in the growth of the bicycle rental business. However, in analyzing the seasonal trends, it is noticeable that spring is the period with the lowest number of visitors. The decline in interest in bicycle rental during spring can be explained by weather dynamics. Spring tends to have elevated temperatures, making some people prefer to do different outdoor activities or use personal transportation. These factors can influence users' decisions in using bicycle rental services. To anticipate these fluctuations, bike rental companies can develop specific strategies to increase interest in certain seasons. For example, by campaigning the advantages of cycling during warm weather or providing attractive special packages for seasons with lower visitation. By doing so, they can optimize their revenue and services throughout the year.")
