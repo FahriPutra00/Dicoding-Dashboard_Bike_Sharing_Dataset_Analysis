@@ -17,3 +17,5 @@ streamlit run Fahri_Submission_Dashboard.py
 ## Link Streamlit App
 
 https://dataanalyticsbikes.streamlit.app/
+
+![image](https://github.com/FahriPutra00/Dicoding-Dashboard_Bike_Sharing_Dataset_Analysis/assets/77821874/827337e7-6cc7-406c-b17f-3e254bb649f6)
